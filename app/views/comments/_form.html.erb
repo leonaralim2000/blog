@@ -1,5 +1,9 @@
 <%= form_with model: [ article, article.comments.build ] do |form| %>
 	<p>
+		<%= form.label :user_id %><br>
+		<%= form.collection_select :user_id, User.all, :id, :name, prompt: "Select a user" %>
+	</p>
+	<p>
 		<%= form.label :commenter %><br>
 		<%= form.text_field :commenter %>
 	</p>
