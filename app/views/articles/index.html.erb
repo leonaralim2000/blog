@@ -1,12 +1,29 @@
 <h1>Articles</h1>
 
+<%= form_with url: articles_path, method: :get, local: true do |form| %>
+	<div>
+		<%= form.label :title, "Search by Title" %>
+		<%= form.text_field :title, value: params[:title] %>
+	</div>
+	<div>
+		<%= form.label :user_id, "Search by Author" %>
+		<%= form.collection_select :user_id, User.all, :id, :name, prompt: "Select a user", selected: params[:user_id] %>
+	</div>
+	<div>
+		<%= form.submit "Search" %>
+		<%= link_to "Clear", articles_path %>
+	</div>
+<% end %>
+
+<hr>
+
 Our blog has <%= Article.public_count %> articles and counting!
 
 <ul>
 	<% @articles.each do |article| %>
 		<% unless article.archived? %>
 			<li>
-				<%= link_to article.title, article %>
+				<%= link_to article.title, article %> by <%= article.user.name %>
 			</li>
 		<% end %>
 	<% end %>
