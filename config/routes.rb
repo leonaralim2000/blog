@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 	root "articles#index"
 
 	resources :articles do
+		collection do 
+			get :all
+		end
 		resources :comments
 	end
 end
