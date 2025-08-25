@@ -1,5 +1,10 @@
 <% unless comment.archived? %>
 	<p>
+		<strong>User:</strong>
+		<%= comment.user.name %>
+	</p>
+	
+	<p>
 		<strong>Commenter:</strong>
 		<%= comment.commenter %>
 	</p>

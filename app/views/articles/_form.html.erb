@@ -8,6 +8,11 @@
 	</div>
 
 	<div>
+		<%= form.label :user_id, "Author" %><br>
+		<%= form.collection_select :user_id, User.all, :id, :name, prompt: "Select a user" %>
+	</div>
+
+	<div>
 		<%= form.label :body %><br>
 		<%= form.text_area :body %>
 		<% article.errors.full_messages_for(:body).each do |message| %>
