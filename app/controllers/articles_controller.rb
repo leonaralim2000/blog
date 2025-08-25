@@ -50,6 +50,11 @@ class ArticlesController < ApplicationController
 		redirect_to root_path,status: :see_other
 	end
 
+	def all
+		@articles = Article.all
+		render json: @articles
+	end
+
 	private
 		def article_params
 			params.require(:article).permit(:title, :body, :status, :user_id)
